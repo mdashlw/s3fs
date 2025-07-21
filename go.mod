@@ -1,4 +1,4 @@
-module github.com/jszwec/s3fs/v2
+module github.com/mdashlw/s3fs/v2
 
 go 1.21
 
