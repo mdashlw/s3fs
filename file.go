@@ -50,7 +50,7 @@ func openFile(cl Client, bucket string, name string) (fs.File, error) {
 		ReadCloser: out.Body,
 		stat:       statFunc,
 		offset:     0,
-		eTag:       *out.ETag,
+		eTag:       stringValue(out.ETag),
 	}, nil
 }
 
@@ -170,4 +170,11 @@ func (eofReader) Read([]byte) (int, error) { return 0, io.EOF }
 
 func ptr[T any](v T) *T {
 	return &v
+}
+
+func stringValue(s *string) string {
+	if s == nil {
+		return ""
+	}
+	return *s
 }
